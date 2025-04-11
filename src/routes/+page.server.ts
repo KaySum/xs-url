@@ -9,7 +9,12 @@ export const load = (async () => {
 
 const urlFormSchema = z.object({
 	url: z.string().url().max(2048),
-	customUrl: z.string().max(255),
+	customUrl: z
+		.string()
+		.max(255)
+		.regex(/^[a-zA-Z0-9_-]+$/, {
+			message: "Custom URL can only contain letters, numbers, underscores, and hyphens",
+		}),
 	duration: z.object({
 		duration: z.number(),
 		unit: z.enum(["hour", "day"]),

@@ -11,7 +11,10 @@
 	});
 </script>
 
-{#if !data.url}
+{#if data.url}
+	<div class="text-warning">Haven't been redirected yet?</div>
+	<a href={data.url} class="link link-hover link-info">Click here</a>
+{:else}
 	<div class="text-warning">This custom URL is not being used</div>
 	<a href="/" class="btn btn-primary">Claim this URL</a>
 {/if}
